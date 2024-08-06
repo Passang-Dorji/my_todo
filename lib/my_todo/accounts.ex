@@ -55,6 +55,12 @@ defmodule MyTodo.Accounts do
     |> Repo.insert()
   end
 
+  def get_user_by_credential(name, email) do
+    case Repo.get_by(User, name: name, email: email) do
+      nil -> {:error, :not_found}
+      user -> {:ok, user}
+    end
+  end
   @doc """
   Updates a user.
 

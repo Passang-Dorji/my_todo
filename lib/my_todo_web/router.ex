@@ -24,6 +24,13 @@ defmodule MyTodoWeb.Router do
     pipe_through :api
     resources "/posts", PostController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
+    resources "/comments", CommentController, except: [:new, :edit]
+  end
+
+  scope "/auth", MyTodoWeb do
+    pipe_through :api
+    post "/signup", AuthController, :signup
+    post "/login", AuthController, :login
   end
   # Other scopes may use custom stacks.
   # scope "/api", MyTodoWeb do
