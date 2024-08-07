@@ -25,6 +25,7 @@ defmodule MyTodoWeb.Router do
     resources "/posts", PostController, except: [:new, :edit]
     resources "/users", UserController, except: [:new, :edit]
     resources "/comments", CommentController, except: [:new, :edit]
+    get "/comments/by_post/:post_id", CommentController, :by_post
   end
 
   scope "/auth", MyTodoWeb do

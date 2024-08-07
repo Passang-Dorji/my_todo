@@ -40,4 +40,9 @@ defmodule MyTodoWeb.CommentController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def by_post(conn, %{"post_id" => post_id}) do
+    comments = Comments.get_comments_by_post(post_id)
+    render(conn, :index, comments: comments)
+  end
 end

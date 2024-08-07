@@ -55,6 +55,10 @@ defmodule MyTodo.Comments do
     |> Repo.insert()
   end
 
+  def get_comments_by_post(post_id) do
+    from(c in Comment, where: c.post_id == ^post_id)
+    |> Repo.all()
+  end
   @doc """
   Updates a comment.
 
